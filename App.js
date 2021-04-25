@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import * as firebase from 'firebase';
 import firebaseConfig from './Api';
 
-
 firebase.initializeApp(firebaseConfig);
 export default function App() {
   return (

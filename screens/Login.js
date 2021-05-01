@@ -14,14 +14,21 @@ export default Login = ({route, navigation}) => {
             screen: 'Singup',
         })
     }
+    const OnClickGoToTabs = () =>{
+        navigation.navigate('MainTabs', {
+            screen: 'MainTabScreen',
+        })
+    }
 
     return (
         <View>
-            <AppBar title={"Login"} />
+            {/* <AppBar title={"Login"} /> */}
             <View>
                 <FormInput label="Email" OnChangeInput={setEmail}/>
                 <FormInput label="Password" OnChangeInput={setPassword}/>
-                <Button mode='contained' onPress={() => console.log('TODO: Firebasse Login')}>Login</Button>
+                <Button mode='contained' onPress={() => {
+                    OnClickGoToTabs();
+                    console.log('TODO: Firebasse Login')}}>Login</Button>
             </View>
 
             <View>

@@ -6,6 +6,7 @@ import firebaseConfig from './Api';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import MainTabScreen from './screens/MainTab';
 
 import Login from './screens/Login';
 import Singup from './screens/Singup';
@@ -31,14 +32,14 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            headerShown: false
+            headerShown: true,
+            headerStyle: { backgroundColor: '#6200EE' },
+            headerTintColor: 'white',
           }}
         >
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Singup" component={Singup} />
-          <Stack.Screen name="Films" component={Films} />
-          <Stack.Screen name="Books" component={Books} />
-          <Stack.Screen name="Games" component={Games} />
+          <Stack.Screen name="MainTabs" component={MainTabScreen} />
           
         </Stack.Navigator>
       </NavigationContainer>

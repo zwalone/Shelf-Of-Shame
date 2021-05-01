@@ -2,11 +2,11 @@ import React from 'react'
 import AppBar from '../components/atom/AppBar'
 import { View, Text } from 'react-native'
 
-export default Books = ({route, navigation}) => {
+export default GamesWatched = ({route, navigation}) => {
     return (
         <View>
             {/* <AppBar title={"Books"} /> */}
-            <Text>BOOKS</Text>
+            <Text>Games Watched</Text>
         </View>
     )
 }

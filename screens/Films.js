@@ -1,10 +1,12 @@
 import React from 'react'
+import AppBar from '../components/atom/AppBar'
 import { View, Text } from 'react-native'
 
 export default Films = ({route, navigation}) => {
     return (
         <View>
-            <Text>Login</Text>
+            {/* <AppBar title={"Films"} /> */}
+            <Text>Films</Text>
         </View>
     )
 }

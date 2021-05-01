@@ -16,7 +16,7 @@ export default Singup = ({route, navigation}) => {
 
     return (
         <View>
-            <AppBar title={'Singup'} goback={OnClickGoBack}/>
+            {/* <AppBar title={'Singup'} goback={OnClickGoBack}/> */}
             <View>
                 <FormInput label="Email" OnChangeInput={setEmail}/>
                 <FormInput label="Password" OnChangeInput={setPassword}/>

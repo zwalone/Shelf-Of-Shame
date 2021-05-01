@@ -1,0 +1,33 @@
+import React from 'react';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+const Tab = createMaterialTopTabNavigator();
+
+import Books from './Books'
+import BooksWatched from './BooksWatched'
+
+const BooksTab = () => {
+    return(
+        <Tab.Navigator
+        initialRouteName="Books"
+        tabBarOptions={{
+          activeTintColor: 'white',
+          labelStyle: { fontSize: 12 },
+          style: { backgroundColor: '#6200EE' },
+        }}
+      >
+        <Tab.Screen
+          name="Books"
+          component={Books}
+          options={{ tabBarLabel: 'Home' }}
+        />
+        <Tab.Screen
+          name="BooksWatched"
+          component={BooksWatched}
+          options={{ tabBarLabel: 'Updates' }}
+        />
+      </Tab.Navigator>
+    )
+}
+
+export default BooksTab;

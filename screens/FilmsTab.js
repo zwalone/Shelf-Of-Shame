@@ -19,12 +19,12 @@ const FilmsTab = () => {
         <Tab.Screen
           name="Films"
           component={Films}
-          options={{ tabBarLabel: 'Home' }}
+          options={{ tabBarLabel: 'Seen' }}
         />
         <Tab.Screen
           name="FilmsWatched"
           component={FilmsWatched}
-          options={{ tabBarLabel: 'Updates' }}
+          options={{ tabBarLabel: 'Unseen' }}
         />
       </Tab.Navigator>
     )

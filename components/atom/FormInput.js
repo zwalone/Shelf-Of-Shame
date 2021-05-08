@@ -22,7 +22,7 @@ export default FormInput = ({OnChangeInput, label}) => {
                 onChangeText={text => {setText(text), OnChangeInput(text) }}
                 secureTextEntry={label === "Password" || label === "Password Confirm" ? true : false}
             />
-            {HelperEmail}
+            {/* {HelperEmail} */}
         </View>
     )
 }

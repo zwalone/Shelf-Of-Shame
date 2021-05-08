@@ -39,7 +39,7 @@ export default function App() {
         >
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Singup" component={Singup} />
-          <Stack.Screen name="MainTabs" component={MainTabScreen} />
+          <Stack.Screen name="Shelf-Of-Shame" component={MainTabScreen} />
           
         </Stack.Navigator>
       </NavigationContainer>

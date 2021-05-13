@@ -1,10 +1,10 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-const Tab = createMaterialTopTabNavigator();
-
 import Books from './Books'
 import BooksWatched from './BooksWatched'
+
+const Tab = createMaterialTopTabNavigator();
 
 const BooksTab = () => {
     return(

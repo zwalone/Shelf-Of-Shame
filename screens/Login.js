@@ -4,9 +4,8 @@ import { View, Text, StyleSheet, KeyboardAvoidingView,
 import { Button, Avatar } from 'react-native-paper'
 import FormInput from '../components/atom/FormInput'
 import * as firebase from 'firebase'
-import { Header } from '@react-navigation/stack'
 
-export default Login = ({route, navigation}) => {
+export default Login = ({navigation}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

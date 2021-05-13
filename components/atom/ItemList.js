@@ -5,12 +5,12 @@ import { List } from 'react-native-paper';
 import ChangeItemDialog from '../atom/ChangeItemDialog'
 import { Ionicons } from '@expo/vector-icons';
 
-export default ItemList = ({item,icon, OnItemClick, togleGetElements}) => {
+export default ItemList = ({item,icon, togleGetElements}) => {
 
     const [showDialog, setShowDialog] = useState(false);
 
     return(
-        <TouchableOpacity onPress={() => {OnItemClick(item); setShowDialog(true)}}> 
+        <TouchableOpacity onPress={() => setShowDialog(true)}> 
             <ChangeItemDialog togleGetElements={togleGetElements} item={item} show={showDialog} hideDialog={setShowDialog} />
             <List.Item 
                 title={item.name}
@@ -21,5 +21,3 @@ export default ItemList = ({item,icon, OnItemClick, togleGetElements}) => {
         </TouchableOpacity>
     )
 };
-
-//<List.Icon {...props} icon={icon} />

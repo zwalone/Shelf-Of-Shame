@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 import * as firebase from 'firebase';
 import firebaseConfig from './Api';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,9 +9,6 @@ import MainTabScreen from './screens/MainTab';
 
 import Login from './screens/Login';
 import Singup from './screens/Singup';
-import Games from './screens/Games';
-import Films from './screens/Films';
-import Books from './screens/Books';
 
 //init firebase
 if (!firebase.apps.length) {
@@ -21,10 +17,8 @@ if (!firebase.apps.length) {
   firebase.app(); // if already initialized, use that one
 }
 
-
 //create nav stack
 const Stack = createStackNavigator();
-
 
 export default function App() {
   return (

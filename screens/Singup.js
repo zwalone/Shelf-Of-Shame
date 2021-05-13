@@ -9,12 +9,7 @@ export default Singup = ({route, navigation}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
-    const [singedup, setSingedup] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-
-    const OnClickGoBack = () => {
-        navigation.goBack()
-    }
 
     const OnSingUpPress = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -41,9 +36,6 @@ export default Singup = ({route, navigation}) => {
             style={{ flex: 1 }}
         >
         <View style={styles.container}>
-            {/* <View style={styles.textView}>
-                <Text>Sing Up my friend to create a account</Text>
-            </View> */}
             <View style={styles.textView}>
                 <Avatar.Image size={160} source={require('../image/sos-logo.png')}/>
             </View>
@@ -77,14 +69,10 @@ const styles = StyleSheet.create({
     },
     fromView: {
         flex: 1,
-        // justifyContent: 'space-around',
         paddingTop: 30,
-        // backgroundColor: 'green',
     },
     submitView: {
         flex: 1,
-        // justifyContent: 'space-around',
-        // backgroundColor: 'red',
     },
     errorMessage: {
         color: 'red',

@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import AppBar from '../components/atom/AppBar'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import FabButton from '../components/atom/FabButton'
 import WatchedList from '../components/atom/molecue/WatchedList'
 import AddItemDialog from '../components/atom/AddItemDialog'
 import getCollection from '../apicalls/getCollection'
 import { useIsFocused } from '@react-navigation/native'
 
-export default Books = ({route, navigation}) => {
+export default Books = ({navigation}) => {
 
     const [showAddDialog, setShowAddDialog] = useState(false);
     const [books, setBooks] = useState([]);
@@ -19,15 +18,8 @@ export default Books = ({route, navigation}) => {
     const OnClickAddHandler = () => {
         setShowAddDialog(true);
     }
-    const OnClickItemHandler = (item) => {
-        console.log("Clicek item")
-    }
-    const OnClickChangeHandler = ({item}) => {
-        console.log(`Change ${item}`)
-    }
 
     useEffect(() => {
-        console.log("ReRender Books")
         getCollection("books", true).then((r) => {
             setBooks(r)
         })
@@ -36,7 +28,7 @@ export default Books = ({route, navigation}) => {
     return (
         <View style={styles.container}>
             <AddItemDialog  togleGetElements={onToggleGetElements} show={showAddDialog} hideDialog={setShowAddDialog}/>
-            <WatchedList  togleGetElements={onToggleGetElements} icon="book" data={books} OnItemClick={OnClickItemHandler}/>
+            <WatchedList  togleGetElements={onToggleGetElements} icon="book" data={books}/>
             <FabButton OnClickHandler={OnClickAddHandler}/>
         </View>
     )

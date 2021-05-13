@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import AppBar from '../components/atom/AppBar'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import FabButton from '../components/atom/FabButton'
 import WatchedList from '../components/atom/molecue/WatchedList'
-import Json from '../mockedJson'
 import AddItemDialog from '../components/atom/AddItemDialog'
 import getCollection from '../apicalls/getCollection'
 import { useIsFocused } from '@react-navigation/native'
 
-export default FilmsWatched = ({route, navigation}) => {
+export default FilmsWatched = ({navigation}) => {
 
     const [showAddDialog, setShowAddDialog] = useState(false);
     const [films , setFilms] = useState([])
@@ -20,12 +18,6 @@ export default FilmsWatched = ({route, navigation}) => {
     const OnClickAddHandler = () => {
         setShowAddDialog(true);
     }
-    const OnClickItemHandler = (item) => {
-        console.log("Clicek item")
-    }
-    const OnClickChangeHandler = ({item}) => {
-        console.log(`Change ${item}`)
-    }
 
     useEffect(() => {
         getCollection("movies", false).then((r) => {
@@ -36,7 +28,7 @@ export default FilmsWatched = ({route, navigation}) => {
     return (
         <View style={styles.container}>
             <AddItemDialog togleGetElements={onToggleGetElements} show={showAddDialog} hideDialog={setShowAddDialog}/>
-            <WatchedList togleGetElements={onToggleGetElements} icon="film-outline" data={films} OnItemClick={OnClickItemHandler}/>
+            <WatchedList togleGetElements={onToggleGetElements} icon="film-outline" data={films}/>
             <FabButton OnClickHandler={OnClickAddHandler}/>
         </View>
     )

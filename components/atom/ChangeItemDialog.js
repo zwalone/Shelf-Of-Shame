@@ -2,17 +2,20 @@ import * as React from 'react';
 import {useState}from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Paragraph, Dialog, Portal, TextInput, Switch } from 'react-native-paper';
+import { deleteDocument } from '../../apicalls/deleteDocument'
 
-export default ChangeItemDialog = ({item, show, hideDialog}) => {
+export default ChangeItemDialog = ({togleGetElements ,item, show, hideDialog}) => {
 
-  const [textTitle, setTextTitle] = useState(item.title);
-  const [textDesc, setTextDesc] = useState(item.description);
-  const [isSwitchOnSeen, setIsSwitchSeen] = React.useState(item.watched);
+  const [textTitle, setTextTitle] = useState(item.name);
+  const [textDesc, setTextDesc] = useState(item.desc);
+  const [isSwitchOnSeen, setIsSwitchSeen] = React.useState(item.seen);
 
   const onToggleSwitch = () => setIsSwitchSeen(!isSwitchOnSeen);
 
-  const OnClickDeleteItem = (item) => {
-    console.log("Delete item")
+  const OnClickDeleteItem = async (item) => {
+    console.log(`itemDialogOnClick: ${item.name}`)
+    await deleteDocument(item)
+    togleGetElements()
   }
 
   return (
@@ -41,8 +44,8 @@ export default ChangeItemDialog = ({item, show, hideDialog}) => {
             </View>
           </Dialog.Content>
           <Dialog.Actions>
-            <Button onPress={() => hideDialog(false)}>Delete</Button>
-            <Button onPress={() => {OnClickDeleteItem(item); hideDialog(false)}}>Done</Button>
+            <Button onPress={() => {OnClickDeleteItem(item); hideDialog(false)}}>Delete</Button>
+            <Button onPress={() => { hideDialog(false)}}>Done</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>

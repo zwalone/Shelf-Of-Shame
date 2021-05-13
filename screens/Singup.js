@@ -18,7 +18,16 @@ export default Singup = ({route, navigation}) => {
 
     const OnSingUpPress = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(() => {
+            .then((u) => {
+                var user = u.user;
+                var result = firebase.firestore().collection("users").doc(user.uid)
+                result.set({})
+                result.collection("movies").doc("test").set({name: "test", desc: 'test', seen: true})
+                result.collection("books").doc("test").set({name: "test", desc: 'test', seen: true})
+                result.collection("games").doc("test").set({name: "test", desc: 'test', seen: true})
+                    .catch((e) => {
+                        console.log(e.message)
+                    })
                 setErrorMessage('');
                 navigation.goBack();
             }).catch((e) =>{

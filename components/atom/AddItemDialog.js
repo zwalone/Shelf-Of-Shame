@@ -2,8 +2,9 @@ import * as React from 'react';
 import {useState}from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Paragraph, Dialog, Portal, TextInput, Switch , RadioButton} from 'react-native-paper';
+import {addToCollection} from '../../apicalls/addToCollections'
 
-export default AddItemDialog = ({show, hideDialog}) => {
+export default AddItemDialog = ({show, hideDialog, togleGetElements}) => {
 
     const [textTitle, setTextTitle] = useState("");
     const [textDesc, setTextDesc] = useState("");
@@ -11,6 +12,14 @@ export default AddItemDialog = ({show, hideDialog}) => {
     const [isSwitchOnSeen, setIsSwitchSeen] = React.useState("");
 
     const onToggleSwitch = () => setIsSwitchSeen(!isSwitchOnSeen);
+
+    const OnClickAdd = async ()  => {
+
+      await addToCollection(checked, {name: textTitle, desc: textDesc,
+         seen: isSwitchOnSeen})
+          .then((e) => {console.log(e); togleGetElements()})
+
+    }
 
   return (
     <View>
@@ -41,22 +50,22 @@ export default AddItemDialog = ({show, hideDialog}) => {
                 <RadioButton.Group onValueChange={value => setChecked(value)} value={checked}>
                     <RadioButton.Item
                         label="Book"
-                        value="Book"
+                        value="books"
                     />
                     <RadioButton.Item
                         label="Film"
-                        value="Film"
+                        value="movies"
                     />
                     <RadioButton.Item
                         label="Game"
-                        value="Game"
+                        value="games"
                     />
                 </RadioButton.Group>
             </View>
           </Dialog.Content>
           <Dialog.Actions>
             <Button onPress={() => hideDialog(false)}>Cancel</Button>
-            <Button onPress={() => hideDialog(false)}>Add</Button>
+            <Button onPress={() => {OnClickAdd(); hideDialog(false)}}>Add</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>

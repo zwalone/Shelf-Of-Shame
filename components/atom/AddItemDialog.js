@@ -42,8 +42,8 @@ export default AddItemDialog = ({show, hideDialog, togleGetElements}) => {
                 />
             {/* {Switch} */}
             <View style={styles.switchView}>
-                <Paragraph>{isSwitchOnSeen ? `Seen`: `Unseen`}</Paragraph>
-                <Switch label={isSwitchOnSeen ? `Seen`: `Unseen`} value={isSwitchOnSeen} onValueChange={onToggleSwitch} />
+                <Paragraph style={styles.seenText} >{isSwitchOnSeen ? `Seen`: `Unseen`}</Paragraph>
+                <Switch style={styles.seenSwitch} label={isSwitchOnSeen ? `Seen`: `Unseen`} value={isSwitchOnSeen} onValueChange={onToggleSwitch} />
             </View>
             {/* {RadioButton} */}
             <View>
@@ -75,11 +75,22 @@ export default AddItemDialog = ({show, hideDialog, togleGetElements}) => {
 
 const styles = StyleSheet.create({
     switchView: {
-        display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginTop: 16,
+      marginBottom: 10,
     },
     dialogParagraph:{
         fontSize: 20,
         textAlign: 'center',
         fontWeight: 'bold',
+    },
+    seenText: {
+      paddingLeft: 16,
+      fontSize: 16,
+    },
+    seenSwitch: {
+      marginRight: 16,
     }
 })

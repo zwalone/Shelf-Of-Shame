@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, StyleSheet, KeyboardAvoidingView, 
+    TouchableWithoutFeedback, Keyboard, Platform   } from 'react-native'
 import { Button, Avatar } from 'react-native-paper'
 import FormInput from '../components/atom/FormInput'
 import * as firebase from 'firebase'
@@ -38,15 +39,13 @@ export default Login = ({route, navigation}) => {
 
     return (
         <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : null}
-                keyboardVerticalOffset={Header.HEIGHT}
+                behavior={Platform.OS === "ios" ? "padding" : "height"} 
                 style={{ flex: 1 }}
             >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
                     <View style={styles.textView}>
                         <Avatar.Image size={160} source={require('../image/sos-logo.png')}/>
-                        <Text>Its because u have SOS</Text>
                     </View>
                     <View style={styles.formView}>
                         <FormInput label="Email" OnChangeInput={setEmail}/>

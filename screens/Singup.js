@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import {Button} from 'react-native-paper'
+import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, Keyboard } from 'react-native'
+import {Button, Avatar} from 'react-native-paper'
 import FormInput from '../components/atom/FormInput'
 import * as firebase from 'firebase'
 
@@ -36,9 +36,16 @@ export default Singup = ({route, navigation}) => {
     }
 
     return (
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"} 
+            style={{ flex: 1 }}
+        >
         <View style={styles.container}>
-            <View style={styles.textView}>
+            {/* <View style={styles.textView}>
                 <Text>Sing Up my friend to create a account</Text>
+            </View> */}
+            <View style={styles.textView}>
+                <Avatar.Image size={160} source={require('../image/sos-logo.png')}/>
             </View>
             <View style={styles.fromView}>
                 <FormInput label="Email" OnChangeInput={setEmail}/>
@@ -50,9 +57,9 @@ export default Singup = ({route, navigation}) => {
                 <Button mode='contained' onPress={() => OnSingUpPress()}>
                     Singup
                 </Button>
-
             </View>
         </View>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -64,19 +71,19 @@ const styles = StyleSheet.create({
         
     },
     textView: {
-        flex: 0.1,
-        justifyContent: 'center',
-        // backgroundColor: 'yellow',
+        flex: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
     },
     fromView: {
         flex: 1,
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
         paddingTop: 30,
         // backgroundColor: 'green',
     },
     submitView: {
         flex: 1,
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
         // backgroundColor: 'red',
     },
     errorMessage: {

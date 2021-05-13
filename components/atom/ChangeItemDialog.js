@@ -45,8 +45,8 @@ export default ChangeItemDialog = ({togleGetElements ,item, show, hideDialog}) =
                 />
             {/* {Switch} */}
             <View style={styles.switchView}>
-                <Paragraph>{isSwitchOnSeen ? `Seen`: `Unseen`}</Paragraph>
-                <Switch value={isSwitchOnSeen} onValueChange={onToggleSwitch} />
+                <Paragraph style={styles.seenText} >{isSwitchOnSeen ? `Seen`: `Unseen`}</Paragraph>
+                <Switch style={styles.seenSwitch} value={isSwitchOnSeen} onValueChange={onToggleSwitch} />
             </View>
           </Dialog.Content>
           <Dialog.Actions>
@@ -60,12 +60,28 @@ export default ChangeItemDialog = ({togleGetElements ,item, show, hideDialog}) =
 };
 
 const styles = StyleSheet.create({
+    dialogParagraph:{
+        fontSize: 20,
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
     switchView: {
-        display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginTop: 16,
+      marginBottom: 10,
     },
     dialogParagraph:{
         fontSize: 20,
         textAlign: 'center',
         fontWeight: 'bold',
+    },
+    seenText: {
+      paddingLeft: 16,
+      fontSize: 16,
+    },
+    seenSwitch: {
+      marginRight: 16,
     }
 })

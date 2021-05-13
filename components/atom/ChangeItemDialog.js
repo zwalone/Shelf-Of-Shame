@@ -3,6 +3,7 @@ import {useState}from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Paragraph, Dialog, Portal, TextInput, Switch } from 'react-native-paper';
 import { deleteDocument } from '../../apicalls/deleteDocument'
+import { updateDocument } from '../../apicalls/updateDocument'
 
 export default ChangeItemDialog = ({togleGetElements ,item, show, hideDialog}) => {
 
@@ -13,8 +14,13 @@ export default ChangeItemDialog = ({togleGetElements ,item, show, hideDialog}) =
   const onToggleSwitch = () => setIsSwitchSeen(!isSwitchOnSeen);
 
   const OnClickDeleteItem = async (item) => {
-    console.log(`itemDialogOnClick: ${item.name}`)
     await deleteDocument(item)
+    togleGetElements()
+  }
+
+  const OnClickUpdateItem = async () => {
+    console.log(`UpdateItem ${{name: textTitle, desc: textDesc, seen: isSwitchOnSeen}}`)
+    await updateDocument({id: item.id, type: item.type, name: textTitle, desc: textDesc, seen: isSwitchOnSeen})
     togleGetElements()
   }
 
@@ -45,7 +51,7 @@ export default ChangeItemDialog = ({togleGetElements ,item, show, hideDialog}) =
           </Dialog.Content>
           <Dialog.Actions>
             <Button onPress={() => {OnClickDeleteItem(item); hideDialog(false)}}>Delete</Button>
-            <Button onPress={() => { hideDialog(false)}}>Done</Button>
+            <Button onPress={() => {OnClickUpdateItem(); hideDialog(false)}}>Update</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>

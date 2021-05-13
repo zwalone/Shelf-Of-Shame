@@ -5,6 +5,7 @@ import FabButton from '../components/atom/FabButton'
 import WatchedList from '../components/atom/molecue/WatchedList'
 import AddItemDialog from '../components/atom/AddItemDialog'
 import getCollection from '../apicalls/getCollection'
+import { useIsFocused } from '@react-navigation/native'
 
 export default Books = ({route, navigation}) => {
 
@@ -13,6 +14,7 @@ export default Books = ({route, navigation}) => {
     const [getElements, setGetElements] = useState(false);
 
     const onToggleGetElements = () => setGetElements(!getElements);
+    const isFocused = useIsFocused()
 
     const OnClickAddHandler = () => {
         setShowAddDialog(true);
@@ -25,10 +27,11 @@ export default Books = ({route, navigation}) => {
     }
 
     useEffect(() => {
+        console.log("ReRender Books")
         getCollection("books", true).then((r) => {
             setBooks(r)
         })
-    }, [getElements])
+    }, [getElements,isFocused])
 
     return (
         <View style={styles.container}>

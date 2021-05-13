@@ -6,6 +6,7 @@ import WatchedList from '../components/atom/molecue/WatchedList'
 import Json from '../mockedJson'
 import AddItemDialog from '../components/atom/AddItemDialog'
 import getCollection from '../apicalls/getCollection'
+import { useIsFocused } from '@react-navigation/native'
 
 export default Films = ({route, navigation}) => {
     const [showAddDialog, setShowAddDialog] = useState(false);
@@ -13,6 +14,7 @@ export default Films = ({route, navigation}) => {
     const [getElements, setGetElements] = useState(false);
 
     const onToggleGetElements = () => setGetElements(!getElements);
+    const isFocused = useIsFocused()
 
     const OnClickAddHandler = () => {
         setShowAddDialog(true);
@@ -28,7 +30,7 @@ export default Films = ({route, navigation}) => {
         getCollection("movies", true).then((r) => {
             setFilms(r)
         })
-    }, [getElements])
+    }, [getElements,isFocused])
 
     return (
         <View style={styles.container}>
